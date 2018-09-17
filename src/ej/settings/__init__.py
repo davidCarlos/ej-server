@@ -86,6 +86,18 @@ class Conf(ThemesConf,
         'DEFAULT_VERSION': 'v1',
     }
 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'ej',
+            'USER': 'ej',
+            'PASSWORD': '',
+            'HOST': 'ej_prod_db',
+            'PORT': '5432'
+        }
+    }
+
+
     # REST_AUTH_REGISTER_SERIALIZERS = {
     #     'REGISTER_SERIALIZER': 'ej_users.serializers.RegistrationSerializer'
     # }
