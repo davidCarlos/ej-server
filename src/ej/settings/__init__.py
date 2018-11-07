@@ -112,6 +112,7 @@ class Conf(ThemesConf,
       # the api key will be informed during the docker build step.
       ANYMAIL = {'MAILGUN_API_KEY': ''};
       DEFAULT_FROM_EMAIL = "Empurrando Juntos <noreply@mail.ejplatform.org>"
+      HOSTNAME = 'https://ejplatform.org'
 
 
 Conf.save_settings(globals())
