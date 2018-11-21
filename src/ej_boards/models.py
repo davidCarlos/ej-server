@@ -32,6 +32,12 @@ class Board(TimeStampedModel):
         blank=True,
     )
 
+    custom_domain = models.CharField(
+      _('Custom Domain'),
+      blank= True,
+      max_length=50
+    )
+
     @property
     def conversations(self):
         return Conversation.objects.filter(board_subscriptions__board=self)
@@ -74,6 +80,14 @@ class Board(TimeStampedModel):
         Return True if conversation is present in board.
         """
         return bool(self.board_subscriptions.filter(conversation=conversation))
+
+    @staticmethod
+    def with_custom_domain(domain):
+      try:
+        board = Board.objects.get(custom_domain=domain).slug;
+        return [board, True]
+      except:
+        return [None, False]
 
 
 class BoardSubscription(models.Model):
