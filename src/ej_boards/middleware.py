@@ -58,11 +58,14 @@ def BoardDomainRedirectMiddleware(get_response):
   def middleware(request):
     response = get_response(request)
     path_info = request.META['PATH_INFO']
-    if(path_info == '/home/'):
-      domain = request.META['HTTP_HOST'].split(':')[0]
-      board, board_exists = Board.with_custom_domain(domain)
-      if(board_exists):
-        return HttpResponsePermanentRedirect('/%s/conversations' % board)
+    if(path_info == '/home'):
+      try:
+        domain = request.META['HTTP_HOST'].split(':')[0]
+        board, board_exists = Board.with_custom_domain(domain)
+        if(board_exists):
+          return HttpResponsePermanentRedirect('/%s/conversations' % board)
+      except:
+        return response
     return response
 
   return middleware
