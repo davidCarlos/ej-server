@@ -99,14 +99,10 @@ class Conf(ThemesConf,
         }
     }
 
-    ALLOWED_HOSTS = ['127.0.0.1']
-
-
     # REST_AUTH_REGISTER_SERIALIZERS = {
     #     'REGISTER_SERIALIZER': 'ej_users.serializers.RegistrationSerializer'
     # }
 
-    # Use this variable to change the ej environment during the docker build step.
     ENVIRONMENT = 'local'
 
     if (ENVIRONMENT == 'production'):
